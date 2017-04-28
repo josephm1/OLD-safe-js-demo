@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Safe Demo</title>
+
+	<link rel="import" href="importsCss.html">
+</head>
+
+<body>
+
+	<a href="../index.html" class="button">Home</a>
+
+<h1>Safe Web App Demo</h1>
+
+	<center>
+		<button id="createorupdatefile" class="waves-effect waves-light btn blue">Create or update file</button>
+		<button id="getfile" class="waves-effect waves-light btn blue">Get file</button>
+		<button id="getfilemetadata" class="waves-effect waves-light btn blue">Get file metadata</button>
+		<button id="movefile" class="waves-effect waves-light btn blue">Move file</button>
+		<button id="renamefile" class="waves-effect waves-light btn blue">Rename file</button>
+		<button id="deletefile" class="waves-effect waves-light btn blue">Delete File </button>
+	</center>
+
+	<div class="container">
+		<form class="col s12">
+			<div class="row">
+				<div class="input-field col s10">
+					<input id="file" type="file" name="safetest" class="waves-effect waves-light btn blue" accept="file_extension|audio/*|video/*|image/*|media_type">
+					<input id="filepath" placeholder="File Path" type="text" value="">
+					<input id="newname" placeholder="New Name" type="text" value="">
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<center>
+		<a href="js\safeapi.js" class="waves-effect waves-light btn-flat" download>safe-js templates</a>
+	</center>
+
+	<p>By Joseph Meagher</p>
+
+	<link rel="import" href="importsJs.html">
+	<script src="../js\nfsfilesafe.js"></script>
+</body>
+
+</html>

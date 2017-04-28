@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Safe Demo</title>
+
+	<link rel="import" href="importsCss.html">
+</head>
+
+<body>
+
+	<a href="../index.html" class="button">Home</a>
+
+
+<h1>Safe Web App Demo</h1>
+
+	<center>
+		<button id="createdir" class="waves-effect waves-light btn blue">Create directory </button>
+		<button id="getdir" class="waves-effect waves-light btn blue">Get directory</button>
+		<button id="movedir" class="waves-effect waves-light btn blue">Move directory</button>
+		<button id="renamedir" class="waves-effect waves-light btn blue">Rename directory</button>
+		<button id="deletedir" class="waves-effect waves-light btn blue">Delete directory</button>
+	</center>
+
+	<div class="container">
+		<form class="col s12">
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="dirpath" placeholder="Directory Name" type="text" value="">
+					<input id="newname" placeholder="New Name" type="text" value="">
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<center>
+		<a href="js\safeapi.js" class="waves-effect waves-light btn-flat" download>safe-js templates</a>
+	</center>
+
+	<p>By Joseph Meagher</p>
+
+	<link rel="import" href="importsJs.html">
+	<script src="../js\nfsdirsafe.js"></script>
+</body>
+
+</html>

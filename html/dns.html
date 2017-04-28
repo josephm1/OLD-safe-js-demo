@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Safe Demo</title>
+
+	<link rel="import" href="importsCss.html">
+</head>
+
+<body>
+
+<a href="../index.html" class="button">Home</a>
+<h1>Safe Web App Demo</h1>
+
+	<div class="container">
+		<div class="col s8">
+			<button id="createlongname" class="waves-effect waves-light btn blue">Create Long Name</button>
+			<button id="createservice" class="waves-effect waves-light btn blue">Create Service</button>
+			<button id="listservices" class="waves-effect waves-light btn blue">List Services</button>
+			<button id="listlongnames" class="waves-effect waves-light btn blue">List Long Names</button>
+		</div>
+		<form class="col s10">
+			<div class="row">
+			<div class="input-field col s10">
+				<input id="longname" placeholder="Long Name" type="text" value="" class="validate">
+				<input id="servicename" placeholder="Service Name" type="text" value="">
+				<div class="fieldwrapper"><input id="homedir" placeholder="Home Directory" type="text" value="">
+			</div>
+		</div>
+	</div>
+	</form>
+</div>
+
+<center>
+	<a href="js\safeapi.js" class="waves-effect waves-light btn-flat" download>safe-js templates</a>
+</center>
+
+<p>By Joseph Meagher</p>
+
+	<link rel="import" href="importsJs.html">
+	<script src="../js\dnssafe.js"></script>
+</body>
+
+</html>

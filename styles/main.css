@@ -1,0 +1,40 @@
+body {
+  color: yellow;
+  background-color: #5792CC;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  color: yellow;
+  font-family: Arial;
+  text-align: center;
+  line-height: 70px;
+  font-style: normal;
+}
+
+p {
+  position:fixed;
+  right:0;
+  bottom:0;
+  margin:0;
+  padding:5px;
+}
+
+center {
+  padding: 15px;
+}
+
+.btn {
+  margin: 5px;
+}
+
+.btn-large{
+  margin: 5px;
+}
+
+a.button {
+  text-decoration: none;
+  color: inherit;
+  padding: 20px 20px 20px 20px;
+}

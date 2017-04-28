@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Safe Web App Demo</title>
+	<link rel="import" href="html\importsCss.html">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="theme-color" content="#5792CC">
+	<!-- Add to home screen for Safari on iOS -->
+	  <meta name="apple-mobile-web-app-capable" content="yes">
+	  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+	  <link rel="apple-touch-icon" href="icons/icon.png">
+</head>
+
+<body>
+
+    <h1>Safe Web App Demo</h1>
+
+	<div class="container">
+		<center>
+			<button id="authorise" class="waves-effect waves-light btn blue">Authorise</button>
+			<button id="istokenvalid" class="waves-effect waves-light btn blue">Check authentication</button>
+		</center>
+		<center>
+			<a href="html\dns.html" class="waves-effect waves-light btn-large blue">DNS</a>
+			<a href="html\nfsfile.html" class="waves-effect waves-light btn-large blue">NFS File</a>
+			<a href="html\nfsdir.html" class="waves-effect waves-light btn-large blue">NFS Directory</a>
+			<a href="html\immudata.html" class="waves-effect waves-light btn-large blue">Immutable Data</a>
+			<a href="html\mudata.html" class="waves-effect waves-light btn-large blue">Mutable Data</a>
+		</center>
+	</div>
+
+	<center>
+		<a href="js\safeapi.js" class="waves-effect waves-light btn-flat" download>safe-js templates</a>
+	</center>
+
+<p>By Joseph Meagher</p>
+
+	<link rel="import" href="html\importsJs.html">
+	<!-- My JS files -->
+	<script src="js\safetest.js"></script>
+</body>
+
+</html>
