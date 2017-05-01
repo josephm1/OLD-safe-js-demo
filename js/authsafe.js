@@ -1,8 +1,5 @@
 //Intial function
 "Use strict";
-window.onload = function() {
-  //index.html
-
 
   //Finds and adds EventListener on auth_button
   window.document.getElementById("authorise").addEventListener("click", function() {
@@ -11,8 +8,6 @@ window.onload = function() {
   window.document.getElementById("istokenvalid").addEventListener("click", function() {
     istokenvalid();
   });
-
-};
 
 const app = {
   name: "Safe Web Demo",
@@ -42,15 +37,14 @@ function authorise() {
         //The authentication is successful
         //Logs some data in the console
         console.log(auth);
-        /*console.log("Hostname: " + hostName);
         console.log("Token: " + auth.token);
-        console.log("Permissions: " + auth.permissions);*/
+        console.log("Permissions: " + auth.permissions);
         localStorage.setItem("auth", auth.token);
       },
       //The Authentication fails
       (err) => {
         //Sends error to console
-        console.error(err);
+        console.lof(err);
       });
 }
 
@@ -58,7 +52,7 @@ function authorise() {
 function istokenvalid() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.error("Error: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
   window.safeAuth.isTokenValid(auth.token)
@@ -66,6 +60,6 @@ function istokenvalid() {
         console.log(isTokenValidRes);
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       });
 }
