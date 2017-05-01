@@ -44,7 +44,7 @@ function authorise() {
       //The Authentication fails
       (err) => {
         //Sends error to console
-        console.lof(err);
+        console.log(err);
       });
 }
 
