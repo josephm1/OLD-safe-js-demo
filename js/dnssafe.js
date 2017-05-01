@@ -24,7 +24,7 @@ window.document.getElementById("listservices").addEventListener("click", functio
 function createlongname() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.log("log: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
   window.safeDNS.createLongName(auth, longname.value)
@@ -40,7 +40,7 @@ function createlongname() {
 function addservice() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.log("log: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
   window.safeDNS.addService(auth, longname.value, servicename.value, homedir.value, false)
@@ -56,7 +56,7 @@ function addservice() {
 function listlongnames() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.log("log: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
   window.safeDNS.listLongNames(auth)
@@ -72,7 +72,7 @@ function listlongnames() {
 function listservices() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.log("log: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
   window.safeDNS.listServices(auth, longname.value)

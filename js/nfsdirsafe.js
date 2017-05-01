@@ -26,7 +26,7 @@ window.document.getElementById("deletedir").addEventListener("click", function()
 function createdir() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.error("Error: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
   window.safeNFS.createDir(auth, dirpath.value, false)
@@ -34,14 +34,14 @@ function createdir() {
         console.log(createDirRes);
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       });
 }
 //deletedir
 function deletedir() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.error("Error: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
   window.safeNFS.deleteDir(auth, dirpath.value, isPathShared = false)
@@ -49,7 +49,7 @@ function deletedir() {
         console.log(deleteDirRes);
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       });
 }
 
@@ -57,7 +57,7 @@ function deletedir() {
 function getdir() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.error("Error: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
   window.safeNFS.getDir(auth, dirpath.value, isPathShared = false)
@@ -65,14 +65,14 @@ function getdir() {
         console.log(getDirRes);
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       });
 }
 //getfilemetadata
 function movedir(moveDir) {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.error("Error: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
   window.safeNFS.moveDir(auth, srcRootPath, srcPath, destRootPath, destPath, action = 'move')
@@ -80,14 +80,14 @@ function movedir(moveDir) {
         console.log(moveDirRes);
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       });
 }
 //getfilemetadata
 function renamedir() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.error("Error: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
   window.safeNFS.renameDir(auth, dirpath.value, newname.value, metadata, isPathShared = false)
@@ -95,6 +95,6 @@ function renamedir() {
         console.log(renameDirRes);
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       });
 }
