@@ -2,9 +2,9 @@
 "Use strict";
 
 var auth = localStorage.getItem("auth");
-var longname = document.getElementById("longname").value;
-var servicename = document.getElementById("servicename").value;
-var homedir = document.getElementById("homedir").value;
+var longname = document.getElementById("longname");
+var servicename = document.getElementById("servicename");
+var homedir = document.getElementById("homedir");
 
 window.document.getElementById("createlongname").addEventListener("click", function() {
   createlongname();
@@ -27,7 +27,7 @@ function createlongname() {
     console.log("log: You are not authorised");
     return;
   }
-  window.safeDNS.createLongName(auth, longname)
+  window.safeDNS.createLongName(auth, longname.value)
     .then((createLongNameRes) => {
         console.log(createLongNameRes);
       },
@@ -43,7 +43,7 @@ function addservice() {
     console.log("log: You are not authorised");
     return;
   }
-  window.safeDNS.addService(auth, longname, servicename, homedir, false)
+  window.safeDNS.addService(auth, longname.value, servicename.value, homedir.value, false)
     .then((addServiceRes) => {
         console.log(addServiceRes);
       },
@@ -75,7 +75,7 @@ function listservices() {
     console.log("log: You are not authorised");
     return;
   }
-  window.safeDNS.listServices(auth, longname)
+  window.safeDNS.listServices(auth, longname.value)
     .then((listServicesRes) => {
         console.log(listServicesRes);
       },

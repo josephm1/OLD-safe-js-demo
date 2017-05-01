@@ -2,8 +2,8 @@
 "Use strict";
 
 var auth = localStorage.getItem("auth");
-var dirpath = document.getElementById("dirpath").value;
-var newname = document.getElementById("newname").value;
+var dirpath = document.getElementById("dirpath");
+var newname = document.getElementById("newname");
 
 window.document.getElementById("createdir").addEventListener("click", function() {
   createdir();
@@ -29,7 +29,7 @@ function createdir() {
     console.error("Error: You are not authorised");
     return;
   }
-  window.safeNFS.createDir(auth, dirpath, false)
+  window.safeNFS.createDir(auth, dirpath.value, false)
     .then((createDirRes) => {
         console.log(createDirRes);
       },
@@ -44,7 +44,7 @@ function deletedir() {
     console.error("Error: You are not authorised");
     return;
   }
-  window.safeNFS.deleteDir(auth, dirpath, isPathShared = false)
+  window.safeNFS.deleteDir(auth, dirpath.value, isPathShared = false)
     .then((deleteDirRes) => {
         console.log(deleteDirRes);
       },
@@ -60,7 +60,7 @@ function getdir() {
     console.error("Error: You are not authorised");
     return;
   }
-  window.safeNFS.getDir(auth, dirpath, isPathShared = false)
+  window.safeNFS.getDir(auth, dirpath.value, isPathShared = false)
     .then((getDirRes) => {
         console.log(getDirRes);
       },
@@ -90,7 +90,7 @@ function renamedir() {
     console.error("Error: You are not authorised");
     return;
   }
-  window.safeNFS.renameDir(auth, dirpath, newname, metadata, isPathShared = false)
+  window.safeNFS.renameDir(auth, dirpath.value, newname.value, metadata, isPathShared = false)
     .then((renameDirRes) => {
         console.log(renameDirRes);
       },

@@ -2,9 +2,9 @@
 "Use strict";
 
 var auth = localStorage.getItem("auth");
-var file = document.getElementById("file").files[0];
-var newname = document.getElementById("newname").value;
-var filepath = document.getElementById("filepath").value;
+var file = document.getElementById("file");
+var newname = document.getElementById("newname");
+var filepath = document.getElementById("filepath");
 
 window.document.getElementById("createorupdatefile").addEventListener("click", function() {
   createorupdatefile();
@@ -30,16 +30,16 @@ window.document.getElementById("deletefile").addEventListener("click", function(
 function createorupdatefile() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.error("Error: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
   console.log();
-  window.safeNFS.createOrUpdateFile(auth, filepath, file, dataType = 'text/plain')
+  window.safeNFS.createOrUpdateFile(auth, filepath.value, file.files[0])
     .then((createOrUpdateFileRes) => {
         console.log(createOrUpdateFileRes);
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       });
 }
 
@@ -49,15 +49,15 @@ function createorupdatefile() {
 function deletefile() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.error("Error: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.deleteFile(auth, filepath, isPathShared = false)
+  window.safeNFS.deleteFile(auth, filepath.value, isPathShared = false)
     .then((deleteFileRes) => {
         console.log(deleteFileRes);
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       });
 }
 
@@ -67,16 +67,16 @@ function deletefile() {
 function getfile() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.error("Error: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.getFile(auth, filepath, responseParsing = 'text', isPathShared = false)
+  window.safeNFS.getFile(auth, filepath.value, responseParsing = 'text', isPathShared = false)
     .then((getFileRes) => {
         console.log(getFileRes);
         this.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(getFileRes);
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       });
 }
 
@@ -84,15 +84,15 @@ function getfile() {
 function getfilemetadata() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.error("Error: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.getFileMetaData(auth, filepath, isPathShared = false)
+  window.safeNFS.getFileMetaData(auth, filepath.value, isPathShared = false)
     .then((getFileMetaDataRes) => {
         console.log(getFileMetaDataRes);
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       });
 }
 
@@ -100,7 +100,7 @@ function getfilemetadata() {
 function movefile() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.error("Error: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
   window.safeNFS.moveFile(auth, srcRootPath, srcPath, destRootPath, destPath, action = 'move')
@@ -108,7 +108,7 @@ function movefile() {
         console.log(moveFileRes);
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       });
 }
 
@@ -116,14 +116,14 @@ function movefile() {
 function renamefile() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
-    console.error("Error: You are not authorised");
+    console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.renameFile(auth, filepath, newname, metadata, isPathShared = false)
+  window.safeNFS.renameFile(auth, filepath.value, newname.value, metadata = "null", isPathShared = false)
     .then((renameFileRes) => {
         console.log(renameFileRes);
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       });
 }
