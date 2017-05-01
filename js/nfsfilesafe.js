@@ -30,7 +30,8 @@ var auth = localStorage.getItem("auth");
           console.error("Error: You are not authorised");
           return;
       }
-      window.safeNFS.createOrUpdateFile(auth, document.getElementById("filepath").value, document.getElementById("file").value, dataType = 'text/plain')
+      console.log();
+      window.safeNFS.createOrUpdateFile(auth, document.getElementById("filepath").value, document.getElementById("file").files[0], dataType = 'text/plain')
           .then((createOrUpdateFileRes) => {
                   console.log(createOrUpdateFileRes);
               },
@@ -69,6 +70,7 @@ var auth = localStorage.getItem("auth");
       window.safeNFS.getFile(auth, document.getElementById("filepath").value, responseParsing = 'text', isPathShared = false)
           .then((getFileRes) => {
                   console.log(getFileRes);
+                  this.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(getFileRes);
               },
               (err) => {
                   console.error(err);

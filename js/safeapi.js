@@ -7,7 +7,7 @@
 
  //app payload
  const app = {
-     name: "Viddy",
+     name: "Safe Web Demo",
      id: "Joe",
      version: "0.0.1",
      vendor: "Joe",

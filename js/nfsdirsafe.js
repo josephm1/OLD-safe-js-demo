@@ -27,7 +27,7 @@ var auth = localStorage.getItem("auth");
           console.error("Error: You are not authorised");
           return;
       }
-      window.safeNFS.createDir(auth, document.getElementById("dirpath").value)
+      window.safeNFS.createDir(auth, document.getElementById("dirpath").value, false)
           .then((createDirRes) => {
                   console.log(createDirRes);
               },
