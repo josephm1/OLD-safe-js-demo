@@ -18,9 +18,9 @@ window.document.getElementById("getfilemetadata").addEventListener("click", func
 window.document.getElementById("renamefile").addEventListener("click", function() {
   renamefile();
 });
-window.document.getElementById("movefile").addEventListener("click", function() {
+/*window.document.getElementById("movefile").addEventListener("click", function() {
   movefile();
-});
+});*/
 window.document.getElementById("deletefile").addEventListener("click", function() {
   deletefile();
 });
@@ -34,7 +34,7 @@ function createorupdatefile() {
     return;
   }
   console.log();
-  window.safeNFS.createOrUpdateFile(auth, filepath.value, file.files[0])
+  window.safeNFS.createOrUpdateFile(auth, filepath.value, file.files[0], "application/octet-stream", file.files[0].length, window.btoa(file.files[0]), false)
     .then((createOrUpdateFileRes) => {
         console.log(createOrUpdateFileRes);
       },
@@ -73,7 +73,6 @@ function getfile() {
   window.safeNFS.getFile(auth, filepath.value, responseParsing = 'text', isPathShared = false)
     .then((getFileRes) => {
         console.log(getFileRes);
-        this.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(getFileRes);
       },
       (err) => {
         console.log(err);
@@ -87,7 +86,7 @@ function getfilemetadata() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.getFileMetaData(auth, filepath.value, isPathShared = false)
+  window.safeNFS.getFileMetadata(auth, filepath.value, isPathShared = false)
     .then((getFileMetaDataRes) => {
         console.log(getFileMetaDataRes);
       },
@@ -96,6 +95,7 @@ function getfilemetadata() {
       });
 }
 
+/*
 //getfilemetadata
 function movefile() {
   if (typeof auth === 'undefined') {
@@ -110,7 +110,7 @@ function movefile() {
       (err) => {
         console.log(err);
       });
-}
+}*/
 
 //getfilemetadata
 function renamefile() {
@@ -119,7 +119,7 @@ function renamefile() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.renameFile(auth, filepath.value, newname.value, metadata = "null", isPathShared = false)
+  window.safeNFS.renameFile(auth, filepath.value, newname.value, window.btoa(file.files[0]), isPathShared = false)
     .then((renameFileRes) => {
         console.log(renameFileRes);
       },
