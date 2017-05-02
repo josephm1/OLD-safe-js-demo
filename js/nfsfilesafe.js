@@ -96,7 +96,7 @@ function getfilemetadata() {
 }
 
 /*
-//getfilemetadata
+//movefile
 function movefile() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
@@ -112,7 +112,7 @@ function movefile() {
       });
 }*/
 
-//getfilemetadata
+//renamefile
 function renamefile() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");

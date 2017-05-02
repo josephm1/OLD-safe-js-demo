@@ -70,7 +70,7 @@ function getdir() {
 }
 
 /*
-//getfilemetadata
+//movedir
 function movedir(moveDir) {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
@@ -87,7 +87,7 @@ function movedir(moveDir) {
 }
 */
 
-//getfilemetadata
+//renamedir
 function renamedir() {
   if (typeof auth === 'undefined') {
     alert("Please authorise first.");
