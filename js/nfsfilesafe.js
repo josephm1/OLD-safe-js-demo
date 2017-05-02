@@ -73,6 +73,7 @@ function getfile() {
   window.safeNFS.getFile(auth, filepath.value, responseParsing = 'text', isPathShared = false)
     .then((getFileRes) => {
         console.log(getFileRes);
+        document.getElementById('textarea').value = getFileRes;
       },
       (err) => {
         console.log(err);
