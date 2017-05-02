@@ -14,9 +14,9 @@ window.document.getElementById("getdir").addEventListener("click", function() {
 window.document.getElementById("renamedir").addEventListener("click", function() {
   renamedir();
 });
-window.document.getElementById("movedir").addEventListener("click", function() {
+/*window.document.getElementById("movedir").addEventListener("click", function() {
   movedir();
-});
+});*/
 window.document.getElementById("deletedir").addEventListener("click", function() {
   deletedir();
 });
@@ -68,6 +68,8 @@ function getdir() {
         console.log(err);
       });
 }
+
+/*
 //getfilemetadata
 function movedir(moveDir) {
   if (typeof auth === 'undefined') {
@@ -83,6 +85,8 @@ function movedir(moveDir) {
         console.log(err);
       });
 }
+*/
+
 //getfilemetadata
 function renamedir() {
   if (typeof auth === 'undefined') {
@@ -90,7 +94,7 @@ function renamedir() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.renameDir(auth, dirpath.value, newname.value, metadata, isPathShared = false)
+  window.safeNFS.renameDir(auth, dirpath.value, newname.value, metadata="null", isPathShared = false)
     .then((renameDirRes) => {
         console.log(renameDirRes);
       },
