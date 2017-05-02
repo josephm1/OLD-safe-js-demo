@@ -5,6 +5,7 @@ var auth = localStorage.getItem("auth");
 var file = document.getElementById("file");
 var newname = document.getElementById("newname");
 var filepath = document.getElementById("filepath");
+var fileshow = document.getElementById('fileshow');
 
 window.document.getElementById("createorupdatefile").addEventListener("click", function() {
   createorupdatefile();
@@ -34,7 +35,7 @@ function createorupdatefile() {
     return;
   }
   console.log();
-  window.safeNFS.createOrUpdateFile(auth, filepath.value, file.files[0], "application/octet-stream", file.files[0].length, window.btoa(file.files[0]), false)
+  window.safeNFS.createOrUpdateFile(auth, filepath.value, file.files[0], "blob", file.files[0].length, window.btoa(file.files[0]), false)
     .then((createOrUpdateFileRes) => {
         console.log(createOrUpdateFileRes);
       },
@@ -70,10 +71,22 @@ function getfile() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.getFile(auth, filepath.value, responseParsing = 'text', isPathShared = false)
+  window.safeNFS.getFile(auth, filepath.value, "blob", isPathShared = false)
     .then((getFileRes) => {
-        console.log(getFileRes);
-        document.getElementById('textarea').value = getFileRes;
+      console.log(getFileRes);
+
+    //convertys blob to file
+      var file = new File([getFileRes], filepath.value);
+
+        //reads file as text
+        fileshow.innerHTML = '<textarea id="textarea" class="materialize-textarea"></textarea>';
+        var reader = new FileReader();
+       reader.onload = function() {
+         document.getElementById('textarea').value = this.result;
+       }
+       reader.readAsText(file)
+
+
       },
       (err) => {
         console.log(err);
