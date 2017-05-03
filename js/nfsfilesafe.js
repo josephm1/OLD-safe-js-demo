@@ -142,7 +142,7 @@ function getfile() {
         function readAsImage() {
           fileReader = new FileReader();
           fileReader.onload = function(event) {
-            fileshow.innerHTML = '<img src="' + this.result + '"></img>'
+            fileshow.innerHTML = '<img class="responsive-img" src="' + this.result + '"></img>'
           };
           fileReader.readAsDataURL(file);
 
@@ -161,7 +161,7 @@ function getfile() {
         function readAsVideo() {
           fileReader = new FileReader();
           fileReader.onload = function(event) {
-            fileshow.innerHTML = '<video controls><source src="' + this.result + '" type="video/mp4">Your browser does not support the video tag.</video>';
+            fileshow.innerHTML = '<video class="responsive-video" controls><source src="' + this.result + '" type="video/mp4">Your browser does not support the video tag.</video>';
           };
           fileReader.readAsDataURL(file);
         }
