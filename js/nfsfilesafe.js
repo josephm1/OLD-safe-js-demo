@@ -73,19 +73,100 @@ function getfile() {
   }
   window.safeNFS.getFile(auth, filepath.value, "blob", isPathShared = false)
     .then((getFileRes) => {
-      console.log(getFileRes);
+        //  console.log(getFileRes);
 
-    //convertys blob to file
-      var file = new File([getFileRes], filepath.value);
+        //converts blob to file
+        var file = new File([getFileRes], filepath.value);
+        console.log(file.name.split('.').pop());
+        console.log(file.type);
 
-        //reads file as text
-        fileshow.innerHTML = '<textarea id="textarea" class="materialize-textarea"></textarea>';
-        var reader = new FileReader();
-       reader.onload = function() {
-         document.getElementById('textarea').value = this.result;
-       }
-       reader.readAsText(file)
+        switch (file.name.split('.').pop()) {
+          //text
+          case "txt":
+          case "html":
+          case "htm":
+          case "css":
+          case "js":
+          case "json":
+          case "md":
+          case "odt":
+          case "rtf":
+          case "csv":
+            readAsText();
+            break;
+            //images
+          case "jpg":
+          case "jpeg":
+          case "png":
+          case "gif":
+          case "tiff":
+          case "tif":
+          case "ico":
+          case "webp":
+          case "svg":
+          case "bmp":
+            readAsImage();
+            break;
+            //audio
+          case "mp3":
+          case "oga":
+          case "wav":
+            readAsAudio();
+            break;
+            //video
+          case "mp4":
+          case "ogv":
+          case "ogg":
+          case "webm":
+            readAsVideo();
+            break;
+          default:
+            //default
+        }
 
+
+        function readAsText() {
+          //reads file as text
+          var reader = new FileReader();
+          reader.onload = function() {
+            fileshow.innerHTML = '<textarea id="textarea" class="materialize-textarea">' + this.result + '</textarea>';
+            $('textarea').each(function() {
+              $(this).height($(this).prop('scrollHeight'));
+            });
+
+          }
+          reader.readAsText(file)
+        }
+
+        //reads file as image
+        function readAsImage() {
+          fileReader = new FileReader();
+          fileReader.onload = function(event) {
+            fileshow.innerHTML = '<img src="' + this.result + '"></img>'
+          };
+          fileReader.readAsDataURL(file);
+
+        }
+
+        //reads file as audio
+        function readAsAudio() {
+          fileshow.innerHTML = '<audio id="sound" controls></audio>'
+          var sound = document.getElementById('sound');
+          sound.src = URL.createObjectURL(file);
+        }
+
+
+
+        //reads file as video
+        function readAsVideo() {
+          fileReader = new FileReader();
+          fileReader.onload = function(event) {
+            fileshow.innerHTML = '<video controls><source src="' + this.result + '" type="video/mp4">Your browser does not support the video tag.</video>';
+          };
+          fileReader.readAsDataURL(file);
+        }
+
+        //default
 
       },
       (err) => {
