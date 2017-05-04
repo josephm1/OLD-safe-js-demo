@@ -30,11 +30,30 @@
 		<form class="col s12">
 			<div class="row">
 				<div class="input-field col s10">
-					<input id="file" type="file" name="safetest" formenctype="multipart/form-data" class="waves-effect waves-light btn blue" accept="file_extension">
-					<input id="filepath" placeholder="File Path" type="text" value="">
-					<input id="newname" placeholder="New Name" type="text" value="">
-					<div id="fileshow" class="fileshow">
+					<!-- File Upload -->
+					<div class="file-field input-field">
+						<div class="btn blue">
+							<span>File</span>
+							<input id="file" type="file" name="safetest" formenctype="multipart/form-data" accept="file_extension">
+						</div>
+						<div class="file-path-wrapper">
+							<input class="file-path validate" type="text">
+						</div>
 					</div>
+					<!-- -->
+					<p>
+						<input name="group1" type="radio" id="test1" />
+						<label for="test1">Red</label>
+					</p>
+					<p>
+						<input name="group1" type="radio" id="test2" />
+						<label for="test2">Yellow</label>
+					</p>
+
+
+					<input id="filepath" placeholder="Name your file (please leave the extension in)" type="text" value="">
+					<input id="newname" placeholder="New Name" type="text" value="">
+					<div id="fileshow" class="fileshow"></div>
 				</div>
 			</div>
 		</form>

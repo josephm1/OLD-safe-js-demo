@@ -6,6 +6,7 @@ var file = document.getElementById("file");
 var newname = document.getElementById("newname");
 var filepath = document.getElementById("filepath");
 var fileshow = document.getElementById('fileshow');
+var appordrive;
 
 window.document.getElementById("createorupdatefile").addEventListener("click", function() {
   createorupdatefile();
@@ -166,7 +167,7 @@ function getfile() {
           var url = window.URL.createObjectURL(file);
           fileReader = new FileReader();
           fileReader.onload = function(event) {
-            fileshow.innerHTML = '<video class="responsive-video" controls><source src="' + this.result + '"></video><a id="downloadfile" class="waves-effect waves-light btn blue" href="' + url + '" download="' + file.name + '">Download file</a>';
+            fileshow.innerHTML = '<video controls autoplay><source src="' + this.result + '" type="' + getFileRes.type + '"></video>';
           };
           fileReader.readAsDataURL(file);
         }
