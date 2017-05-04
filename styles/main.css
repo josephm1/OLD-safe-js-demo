@@ -13,12 +13,16 @@ h1, h3 {
   font-style: normal;
 }
 
+audio, video, img {
+  width: 100%;
+}
+
 p {
-  position:fixed;
-  right:0;
-  bottom:0;
-  margin:0;
-  padding:5px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 5px;
 }
 
 center {
@@ -29,7 +33,7 @@ center {
   margin: 5px;
 }
 
-.btn-large{
+.btn-large {
   margin: 5px;
 }
 
@@ -43,5 +47,4 @@ a.button {
   color: #5792CC;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
-
 }
