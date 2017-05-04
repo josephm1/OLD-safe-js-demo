@@ -122,6 +122,7 @@ function getfile() {
             break;
           default:
             //default
+            default();
         }
 
 
@@ -167,6 +168,9 @@ function getfile() {
         }
 
         //default
+            function default() {
+             fileshow.innerHTML = '<form method="get" action="'+ file.name +'"><button class="waves-effect waves-light btn blue" type="submit">Download file</button></form>'              
+      }
 
       },
       (err) => {
