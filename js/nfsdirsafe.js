@@ -94,7 +94,7 @@ function renamedir() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.renameDir(auth, dirpath.value, newname.value, metadata="null", isPathShared = false)
+  window.safeNFS.renameDir(auth, dirpath.value, newname.value, metadata = "null", isPathShared = false)
     .then((renameDirRes) => {
         console.log(renameDirRes);
       },

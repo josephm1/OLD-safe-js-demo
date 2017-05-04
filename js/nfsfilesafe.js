@@ -78,7 +78,6 @@ function getfile() {
         //converts blob to file
         var file = new File([getFileRes], filepath.value);
         console.log(file.name.split('.').pop());
-        console.log(file.type);
 
         switch (file.name.split('.').pop()) {
           //text
@@ -122,28 +121,31 @@ function getfile() {
             break;
           default:
             //default
-            default();
+            download();
         }
 
 
         function readAsText() {
           //reads file as text
+
           var reader = new FileReader();
           reader.onload = function() {
-            fileshow.innerHTML = '<textarea id="textarea" class="materialize-textarea">' + this.result + '</textarea>';
+            var url = window.URL.createObjectURL(file);
+            fileshow.innerHTML = '<textarea id="textarea" class="materialize-textarea">' + this.result + '</textarea><a id="downloadfile" class="waves-effect waves-light btn blue" href="' + url + '" download="' + file.name + '">Download file</a>';
             $('textarea').each(function() {
               $(this).height($(this).prop('scrollHeight'));
             });
 
-          }
-          reader.readAsText(file)
+          };
+          reader.readAsText(file);
         }
 
         //reads file as image
         function readAsImage() {
+          var url = window.URL.createObjectURL(file);
           fileReader = new FileReader();
           fileReader.onload = function(event) {
-            fileshow.innerHTML = '<img class="responsive-img" src="' + this.result + '"></img>'
+            fileshow.innerHTML = '<img class="responsive-img" src="' + this.result + '"></img><a id="downloadfile" class="waves-effect waves-light btn blue" href="' + url + '" download="' + file.name + '">Download file</a>';
           };
           fileReader.readAsDataURL(file);
 
@@ -151,7 +153,8 @@ function getfile() {
 
         //reads file as audio
         function readAsAudio() {
-          fileshow.innerHTML = '<audio id="sound" controls></audio>'
+          var url = window.URL.createObjectURL(file);
+          fileshow.innerHTML = '<audio id="sound" controls></audio><a id="downloadfile" class="waves-effect waves-light btn blue" href="' + url + '" download="' + file.name + '">Download file</a>';
           var sound = document.getElementById('sound');
           sound.src = URL.createObjectURL(file);
         }
@@ -160,17 +163,20 @@ function getfile() {
 
         //reads file as video
         function readAsVideo() {
+          var url = window.URL.createObjectURL(file);
           fileReader = new FileReader();
           fileReader.onload = function(event) {
-            fileshow.innerHTML = '<video class="responsive-video" controls><source src="' + this.result + '" type="video/mp4">Your browser does not support the video tag.</video>';
+            fileshow.innerHTML = '<video class="responsive-video" controls><source src="' + this.result + '"></video><a id="downloadfile" class="waves-effect waves-light btn blue" href="' + url + '" download="' + file.name + '">Download file</a>';
           };
           fileReader.readAsDataURL(file);
         }
 
         //default
-            function default() {
-             fileshow.innerHTML = '<form method="get" action="'+ file.name +'"><button class="waves-effect waves-light btn blue" type="submit">Download file</button></form>'              
-      }
+        function download() {
+          console.log(file.name);
+          var url = window.URL.createObjectURL(file);
+          fileshow.innerHTML = '<a id="downloadfile" class="waves-effect waves-light btn blue" href="' + url + '" download="' + file.name + '">Download file</a>';
+        }
 
       },
       (err) => {

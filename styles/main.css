@@ -43,8 +43,7 @@ a.button {
   padding: 20px 20px 20px 20px;
 }
 
-.fileshow {
-  color: #5792CC;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
+#downloadfile {
+  margin: auto;
+  display: block;
 }

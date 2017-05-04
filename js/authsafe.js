@@ -1,13 +1,13 @@
 //Intial function
 "Use strict";
 
-  //Finds and adds EventListener on auth_button
-  window.document.getElementById("authorise").addEventListener("click", function() {
-    authorise();
-  });
-  window.document.getElementById("istokenvalid").addEventListener("click", function() {
-    istokenvalid();
-  });
+//Finds and adds EventListener on auth_button
+window.document.getElementById("authorise").addEventListener("click", function() {
+  authorise();
+});
+window.document.getElementById("istokenvalid").addEventListener("click", function() {
+  istokenvalid();
+});
 
 const app = {
   name: "Safe Web Demo",
