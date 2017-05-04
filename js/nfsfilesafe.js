@@ -167,7 +167,7 @@ function getfile() {
           var url = window.URL.createObjectURL(file);
           fileReader = new FileReader();
           fileReader.onload = function(event) {
-            fileshow.innerHTML = '<video controls autoplay><source src="' + this.result + '" type="' + getFileRes.type + '"></video>';
+            fileshow.innerHTML = '<video controls><source src="' + this.result + '" type="' + getFileRes.type + '"></video>';
           };
           fileReader.readAsDataURL(file);
         }
