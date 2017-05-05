@@ -4,6 +4,20 @@
 var auth = localStorage.getItem("auth");
 var dirpath = document.getElementById("dirpath");
 var newname = document.getElementById("newname");
+var appordrive = function() {
+  if (document.getElementById('drive').checked) {
+    return true;
+  } else if (document.getElementById('app').checked) {
+    return false;
+  }
+};
+var privorpub = function() {
+  if (document.getElementById('private').checked) {
+    return true;
+  } else if (document.getElementById('public').checked) {
+    return false;
+  }
+};
 
 window.document.getElementById("createdir").addEventListener("click", function() {
   createdir();
@@ -14,13 +28,12 @@ window.document.getElementById("getdir").addEventListener("click", function() {
 window.document.getElementById("renamedir").addEventListener("click", function() {
   renamedir();
 });
-/*window.document.getElementById("movedir").addEventListener("click", function() {
-  movedir();
-});*/
 window.document.getElementById("deletedir").addEventListener("click", function() {
   deletedir();
 });
-
+/*window.document.getElementById("movedir").addEventListener("click", function() {
+  movedir();
+});*/
 
 //createdir
 function createdir() {
@@ -29,7 +42,7 @@ function createdir() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.createDir(auth, dirpath.value, false)
+  window.safeNFS.createDir(auth, dirpath.value, privorpub, window.btoa(dirpath.value), appordrive)
     .then((createDirRes) => {
         console.log(createDirRes);
       },
@@ -44,7 +57,7 @@ function deletedir() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.deleteDir(auth, dirpath.value, isPathShared = false)
+  window.safeNFS.deleteDir(auth, dirpath.value, appordrive)
     .then((deleteDirRes) => {
         console.log(deleteDirRes);
       },
@@ -60,9 +73,25 @@ function getdir() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.getDir(auth, dirpath.value, isPathShared = false)
+  window.safeNFS.getDir(auth, dirpath.value, appordrive)
     .then((getDirRes) => {
         console.log(getDirRes);
+      },
+      (err) => {
+        console.log(err);
+      });
+}
+
+//renamedir
+function renamedir() {
+  if (typeof auth === 'undefined') {
+    alert("Please authorise first.");
+    console.log("Error: You are not authorised");
+    return;
+  }
+  window.safeNFS.renameDir(auth, dirpath.value, newname.value, window.btoa(newname.value), appordrive)
+    .then((renameDirRes) => {
+        console.log(renameDirRes);
       },
       (err) => {
         console.log(err);
@@ -86,19 +115,3 @@ function movedir(moveDir) {
       });
 }
 */
-
-//renamedir
-function renamedir() {
-  if (typeof auth === 'undefined') {
-    alert("Please authorise first.");
-    console.log("Error: You are not authorised");
-    return;
-  }
-  window.safeNFS.renameDir(auth, dirpath.value, newname.value, metadata = "null", isPathShared = false)
-    .then((renameDirRes) => {
-        console.log(renameDirRes);
-      },
-      (err) => {
-        console.log(err);
-      });
-}

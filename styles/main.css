@@ -43,6 +43,29 @@ a.button {
   padding: 20px 20px 20px 20px;
 }
 
+.radio-buttons {
+  padding: 5px 0;
+}
+
+input[type="radio"]:checked+label {
+  color: yellow;
+}
+
+input[type="radio"]:not(:checked)+label {
+  color: #d1d1d1;
+}
+
+input[type="radio"]:checked+label:before, [type="radio"]:not(:checked)+label:after {
+  border-radius: 50%;
+  border: 2px solid yellow;
+}
+
+input[type="radio"]:checked+label:after {
+  border-radius: 50%;
+  border: yellow;
+  background-color: yellow;
+}
+
 #downloadfile {
   margin: auto;
   display: block;

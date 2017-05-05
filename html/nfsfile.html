@@ -29,7 +29,7 @@
 	<div class="container">
 		<form class="col s12">
 			<div class="row">
-				<div class="input-field col s10">
+				<div class="input-field col s12">
 					<!-- File Upload -->
 					<div class="file-field input-field">
 						<div class="btn blue">
@@ -40,8 +40,18 @@
 							<input class="file-path validate" type="text">
 						</div>
 					</div>
-					<input id="filepath" placeholder="Name your file (please leave the extension in)" type="text" value="">
-					<input id="newname" placeholder="New Name" type="text" value="">
+					<!-- app or drive-->
+					<div class="radio-buttons">
+						<input name="appordrive" type="radio" id="drive" value="true" checked="checked">
+						<label class="safe-label" for="drive">Safe drive</label>
+						<input name="appordrive" type="radio" id="app" value="false">
+						<label class="safe-label" for="app">App drive</label>
+					</div>
+					<!-- Input field -->
+					<div>
+						<input id="filepath" placeholder="Name your file (please leave the extension in)" type="text" value="">
+						<input id="newname" placeholder="New Name" type="text" value="">
+					</div>
 					<div id="fileshow" class="fileshow"></div>
 				</div>
 			</div>

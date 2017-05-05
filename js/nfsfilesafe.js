@@ -5,8 +5,13 @@ var auth = localStorage.getItem("auth");
 var file = document.getElementById("file");
 var newname = document.getElementById("newname");
 var filepath = document.getElementById("filepath");
-var fileshow = document.getElementById('fileshow');
-var appordrive;
+var appordrive = function() {
+  if (document.getElementById('drive').checked) {
+    return true;
+  } else if (document.getElementById('app').checked) {
+    return false;
+  }
+};
 
 window.document.getElementById("createorupdatefile").addEventListener("click", function() {
   createorupdatefile();
@@ -35,8 +40,7 @@ function createorupdatefile() {
     console.log("Error: You are not authorised");
     return;
   }
-  console.log();
-  window.safeNFS.createOrUpdateFile(auth, filepath.value, file.files[0], "blob", file.files[0].length, window.btoa(file.files[0]), false)
+  window.safeNFS.createOrUpdateFile(auth, filepath.value, file.files[0], "blob", file.files[0].length, window.btoa(file.files[0]), appordrive)
     .then((createOrUpdateFileRes) => {
         console.log(createOrUpdateFileRes);
       },
@@ -54,7 +58,7 @@ function deletefile() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.deleteFile(auth, filepath.value, isPathShared = false)
+  window.safeNFS.deleteFile(auth, filepath.value, appordrive)
     .then((deleteFileRes) => {
         console.log(deleteFileRes);
       },
@@ -72,7 +76,7 @@ function getfile() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.getFile(auth, filepath.value, "blob", isPathShared = false)
+  window.safeNFS.getFile(auth, filepath.value, "blob", appordrive)
     .then((getFileRes) => {
         //  console.log(getFileRes);
 
@@ -192,9 +196,25 @@ function getfilemetadata() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.getFileMetadata(auth, filepath.value, isPathShared = false)
+  window.safeNFS.getFileMetadata(auth, filepath.value, appordrive)
     .then((getFileMetaDataRes) => {
         console.log(getFileMetaDataRes);
+      },
+      (err) => {
+        console.log(err);
+      });
+}
+
+//renamefile
+function renamefile() {
+  if (typeof auth === 'undefined') {
+    alert("Please authorise first.");
+    console.log("Error: You are not authorised");
+    return;
+  }
+  window.safeNFS.renameFile(auth, filepath.value, newname.value, window.btoa(file.files[0]), appordrive)
+    .then((renameFileRes) => {
+        console.log(renameFileRes);
       },
       (err) => {
         console.log(err);
@@ -217,19 +237,3 @@ function movefile() {
         console.log(err);
       });
 }*/
-
-//renamefile
-function renamefile() {
-  if (typeof auth === 'undefined') {
-    alert("Please authorise first.");
-    console.log("Error: You are not authorised");
-    return;
-  }
-  window.safeNFS.renameFile(auth, filepath.value, newname.value, window.btoa(file.files[0]), isPathShared = false)
-    .then((renameFileRes) => {
-        console.log(renameFileRes);
-      },
-      (err) => {
-        console.log(err);
-      });
-}
