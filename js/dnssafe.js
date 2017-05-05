@@ -5,6 +5,13 @@ var auth = localStorage.getItem("auth");
 var longname = document.getElementById("longname");
 var servicename = document.getElementById("servicename");
 var homedir = document.getElementById("homedir");
+var appordrive = function() {
+  if (document.getElementById('drive').checked) {
+    return true;
+  } else if (document.getElementById('app').checked) {
+    return false;
+  }
+};
 
 window.document.getElementById("createlongname").addEventListener("click", function() {
   createlongname();
@@ -43,7 +50,7 @@ function addservice() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeDNS.addService(auth, longname.value, servicename.value, homedir.value, false)
+  window.safeDNS.addService(auth, longname.value, servicename.value, homedir.value, appordrive)
     .then((addServiceRes) => {
         console.log(addServiceRes);
       },

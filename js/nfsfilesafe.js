@@ -25,13 +25,12 @@ window.document.getElementById("getfilemetadata").addEventListener("click", func
 window.document.getElementById("renamefile").addEventListener("click", function() {
   renamefile();
 });
-/*window.document.getElementById("movefile").addEventListener("click", function() {
-  movefile();
-});*/
 window.document.getElementById("deletefile").addEventListener("click", function() {
   deletefile();
 });
-
+/*window.document.getElementById("movefile").addEventListener("click", function() {
+  movefile();
+});*/
 
 //createorupdatefile
 function createorupdatefile() {
@@ -49,8 +48,6 @@ function createorupdatefile() {
       });
 }
 
-
-
 //deletefile
 function deletefile() {
   if (typeof auth === 'undefined') {
@@ -67,8 +64,6 @@ function deletefile() {
       });
 }
 
-
-
 //getfile
 function getfile() {
   if (typeof auth === 'undefined') {
@@ -78,8 +73,7 @@ function getfile() {
   }
   window.safeNFS.getFile(auth, filepath.value, "blob", appordrive)
     .then((getFileRes) => {
-        //  console.log(getFileRes);
-
+        //console.log(getFileRes);
         //converts blob to file
         var file = new File([getFileRes], filepath.value);
         console.log(file.name.split('.').pop());
@@ -129,10 +123,8 @@ function getfile() {
             download();
         }
 
-
+        //reads file as text
         function readAsText() {
-          //reads file as text
-
           var reader = new FileReader();
           reader.onload = function() {
             var url = window.URL.createObjectURL(file);
@@ -153,7 +145,6 @@ function getfile() {
             fileshow.innerHTML = '<img class="responsive-img" src="' + this.result + '"></img><a id="downloadfile" class="waves-effect waves-light btn blue" href="' + url + '" download="' + file.name + '">Download file</a>';
           };
           fileReader.readAsDataURL(file);
-
         }
 
         //reads file as audio
@@ -163,8 +154,6 @@ function getfile() {
           var sound = document.getElementById('sound');
           sound.src = URL.createObjectURL(file);
         }
-
-
 
         //reads file as video
         function readAsVideo() {
@@ -182,7 +171,6 @@ function getfile() {
           var url = window.URL.createObjectURL(file);
           fileshow.innerHTML = '<a id="downloadfile" class="waves-effect waves-light btn blue" href="' + url + '" download="' + file.name + '">Download file</a>';
         }
-
       },
       (err) => {
         console.log(err);

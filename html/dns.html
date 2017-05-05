@@ -28,7 +28,13 @@
 				<div class="input-field col s10">
 					<input id="longname" placeholder="Long Name" type="text" value="" class="validate">
 					<input id="servicename" placeholder="Service Name" type="text" value="">
-					<div class="fieldwrapper"><input id="homedir" placeholder="Home Directory" type="text" value="">
+					<input id="homedir" placeholder="Home Directory" type="text" value="">
+					<!-- app or drive-->
+					<div class="radio-buttons">
+						<input name="appordrive" type="radio" id="drive" value="true" checked="checked">
+						<label class="safe-label" for="drive">Safe drive</label>
+						<input name="appordrive" type="radio" id="app" value="false">
+						<label class="safe-label" for="app">App drive</label>
 					</div>
 				</div>
 			</div>
