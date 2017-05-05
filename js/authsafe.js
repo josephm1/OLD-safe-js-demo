@@ -12,7 +12,7 @@ window.document.getElementById("istokenvalid").addEventListener("click", functio
 const app = {
   name: "Safe Web Demo",
   id: "Joe",
-  version: "0.0.1",
+  version: "1",
   vendor: "Joe",
   permissions: [
     "SAFE_DRIVE_ACCESS"
