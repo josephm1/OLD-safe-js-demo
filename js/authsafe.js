@@ -15,7 +15,7 @@ const app = {
   version: "0.0.1",
   vendor: "Joe",
   permissions: [
-    "LOW_LEVEL_API", "SAFE_DRIVE_ACCESS"
+    "SAFE_DRIVE_ACCESS"
   ]
 };
 
