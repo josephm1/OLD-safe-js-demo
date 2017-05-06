@@ -15,6 +15,7 @@ h1, h3 {
 
 audio, video, img {
   width: 100%;
+  padding: 20px;
 }
 
 p {
