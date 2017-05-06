@@ -5,7 +5,7 @@ var auth = localStorage.getItem("auth");
 var file = document.getElementById("file");
 var newname = document.getElementById("newname");
 var filepath = document.getElementById("filepath");
-var appordrive = function() {
+var appordrive =  function() {
   if (document.getElementById('drive').checked) {
     return true;
   } else if (document.getElementById('app').checked) {
@@ -39,7 +39,7 @@ function createorupdatefile() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.createOrUpdateFile(auth, filepath.value, file.files[0], "blob", file.files[0].length, window.btoa(file.files[0]), appordrive)
+  window.safeNFS.createOrUpdateFile(auth, filepath.value, file.files[0], "blob", file.files[0].length, window.btoa(file.files[0]), appordrive())
     .then((createOrUpdateFileRes) => {
         console.log(createOrUpdateFileRes);
       },
@@ -55,7 +55,7 @@ function deletefile() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.deleteFile(auth, filepath.value, appordrive)
+  window.safeNFS.deleteFile(auth, filepath.value, appordrive())
     .then((deleteFileRes) => {
         console.log(deleteFileRes);
       },
@@ -71,12 +71,13 @@ function getfile() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.getFile(auth, filepath.value, "blob", appordrive)
+  console.log(appordrive());
+  window.safeNFS.getFile(auth, filepath.value, "blob", appordrive())
     .then((getFileRes) => {
         //console.log(getFileRes);
         //converts blob to file
         var file = new File([getFileRes], filepath.value);
-        console.log(file.name.split('.').pop());
+        console.log("Your file is a " + file.name.split('.').pop() + "file.");
 
         switch (file.name.split('.').pop()) {
           //text
@@ -184,7 +185,7 @@ function getfilemetadata() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.getFileMetadata(auth, filepath.value, appordrive)
+  window.safeNFS.getFileMetadata(auth, filepath.value, appordrive())
     .then((getFileMetaDataRes) => {
         console.log(getFileMetaDataRes);
       },
@@ -200,7 +201,7 @@ function renamefile() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.renameFile(auth, filepath.value, newname.value, window.btoa(file.files[0]), appordrive)
+  window.safeNFS.renameFile(auth, filepath.value, newname.value, window.btoa(file.files[0]), appordrive())
     .then((renameFileRes) => {
         console.log(renameFileRes);
       },

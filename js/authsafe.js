@@ -37,7 +37,7 @@ function authorise() {
         //The authentication is successful
         //Logs some data in the console
         console.log(auth);
-        console.log("Token: " + auth.token);
+        console.log("Token:" + auth.token);
         console.log("Permissions: " + auth.permissions);
         localStorage.setItem("auth", auth.token);
       },

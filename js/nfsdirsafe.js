@@ -42,7 +42,7 @@ function createdir() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.createDir(auth, dirpath.value, privorpub, window.btoa(dirpath.value), appordrive)
+  window.safeNFS.createDir(auth, dirpath.value, privorpub(), window.btoa(dirpath.value), appordrive())
     .then((createDirRes) => {
         console.log(createDirRes);
       },
@@ -57,7 +57,7 @@ function deletedir() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.deleteDir(auth, dirpath.value, appordrive)
+  window.safeNFS.deleteDir(auth, dirpath.value, appordrive())
     .then((deleteDirRes) => {
         console.log(deleteDirRes);
       },
@@ -73,7 +73,7 @@ function getdir() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.getDir(auth, dirpath.value, appordrive)
+  window.safeNFS.getDir(auth, dirpath.value, appordrive())
     .then((getDirRes) => {
         console.log(getDirRes);
       },
@@ -89,7 +89,7 @@ function renamedir() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeNFS.renameDir(auth, dirpath.value, newname.value, window.btoa(newname.value), appordrive)
+  window.safeNFS.renameDir(auth, dirpath.value, newname.value, window.btoa(newname.value), appordrive())
     .then((renameDirRes) => {
         console.log(renameDirRes);
       },

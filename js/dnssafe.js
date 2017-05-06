@@ -50,7 +50,7 @@ function addservice() {
     console.log("Error: You are not authorised");
     return;
   }
-  window.safeDNS.addService(auth, longname.value, servicename.value, homedir.value, appordrive)
+  window.safeDNS.addService(auth, longname.value, servicename.value, homedir.value, appordrive())
     .then((addServiceRes) => {
         console.log(addServiceRes);
       },
