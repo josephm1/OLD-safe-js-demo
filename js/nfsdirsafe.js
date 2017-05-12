@@ -76,6 +76,9 @@ function getdir() {
   window.safeNFS.getDir(auth, dirpath.value, appordrive())
     .then((getDirRes) => {
         console.log(getDirRes);
+        //clears out html contents on each get
+        foldercontents.innerHTML = "";
+        
         var files = getDirRes.files;
         for (var i = 0; i < files.length; i++) {
           console.log(files[i].name);

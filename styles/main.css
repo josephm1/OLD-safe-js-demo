@@ -32,10 +32,8 @@ audio {
 
 .icons {
   margin: 30px;
-  width: 70px;
-  height: 100px;
   float: left;
-  text-align: center;
+  text-align: justify;
 }
 
 center {
