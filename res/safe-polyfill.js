@@ -173,7 +173,7 @@
 	var dnsList = null;
 
 	/*
-	* Manifest for Beaker: 
+	* Manifest for Beaker:
 	* https://github.com/pfrazee/beaker/blob/master/doc/authoring-plugins.md#api-manifests
 	*/
 	var manifest = exports.manifest = {
@@ -4771,7 +4771,7 @@
 	      /* This will not work in older browsers.
 	       * See https://developer.mozilla.org/en-US/docs/Web/API/window.crypto.getRandomValues
 	       */
-	    
+
 	      _crypto.getRandomValues(bytes);
 	      return bytes;
 	    }
@@ -5899,7 +5899,7 @@
 /* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
 	 * in FIPS 180-2
@@ -11044,7 +11044,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/*
-	* Manifest for Beaker: 
+	* Manifest for Beaker:
 	* https://github.com/pfrazee/beaker/blob/master/doc/authoring-plugins.md#api-manifests
 	*/
 	var manifest = exports.manifest = {
@@ -11298,7 +11298,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/*
-	* Manifest for Beaker: 
+	* Manifest for Beaker:
 	* https://github.com/pfrazee/beaker/blob/master/doc/authoring-plugins.md#api-manifests
 	*/
 	var manifest = exports.manifest = {
@@ -11383,7 +11383,7 @@
 	            }
 	        });
 	    }).catch(function (response) {
-	        //file doesnt exist 
+	        //file doesnt exist
 	        if (response.status === 404) {
 	            return createFile(token, filePath, dataToWrite, dataType, dataLength, metadata, isPathShared);
 	        } else {
@@ -11487,7 +11487,8 @@
 
 	    return (0, _isomorphicFetch2.default)(url, payload).then(function (response) {
 	        if (response.status === 200) {
-	            return response.headers;
+							return response;
+
 	        } else {
 	            return Promise.reject(response);
 	        }

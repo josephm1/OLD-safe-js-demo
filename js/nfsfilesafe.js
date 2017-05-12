@@ -74,10 +74,9 @@ function getfile() {
   console.log(appordrive());
   window.safeNFS.getFile(auth, filepath.value, "blob", appordrive())
     .then((getFileRes) => {
-        //console.log(getFileRes);
         //converts blob to file
         var file = new File([getFileRes], filepath.value);
-        console.log("Your file is a " + file.name.split('.').pop() + "file.");
+        console.log("Your file is a " + file.name.split('.').pop() + " file.");
 
         switch (file.name.split('.').pop()) {
           //text

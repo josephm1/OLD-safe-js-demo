@@ -76,6 +76,18 @@ function getdir() {
   window.safeNFS.getDir(auth, dirpath.value, appordrive())
     .then((getDirRes) => {
         console.log(getDirRes);
+        var files = getDirRes.files;
+        for (var i = 0; i < files.length; i++) {
+          console.log(files[i].name);
+          $("#foldercontents").append("<div class='icons'><i class='material-icons md-48'>description</i><p>" + files[i].name  + "</p></div>");
+        //  foldercontents.innerHTML = "<div class='icons'><i class='material-icons md-48'>description</i><p>" + files[i].name + "</p></div>";
+        }
+        var subdirs = getDirRes.subDirectories;
+        for (var y = 0; y < subdirs.length; y++) {
+          console.log(subdirs[y].name);
+          $("#foldercontents").append("<div class='icons'><i class='material-icons md-48'>folder</i><p>" + subdirs[y].name + "</p></div>");
+        //  foldercontents.innerHTML = "<div class='icons'><i class='material-icons md-48'>folder</i><p>" + subdirs[y].name + "</p></div>";
+        }
       },
       (err) => {
         console.log(err);

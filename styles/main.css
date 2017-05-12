@@ -13,12 +13,16 @@ h1, h3 {
   font-style: normal;
 }
 
-audio, video, img {
+textarea, audio, video, img {
   width: 100%;
   padding: 20px;
 }
 
-p {
+audio {
+  margin-top: 30px;
+}
+
+.credit {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -26,16 +30,25 @@ p {
   padding: 5px;
 }
 
+.icons {
+  margin: 30px;
+  width: 70px;
+  height: 100px;
+  float: left;
+  text-align: center;
+}
+
 center {
   padding: 15px;
 }
 
-.btn {
+.btn, .btn-large {
   margin: 5px;
 }
 
-.btn-large {
-  margin: 5px;
+#downloadfile {
+  margin: auto;
+  display: block;
 }
 
 a.button {
@@ -67,7 +80,18 @@ input[type="radio"]:checked+label:after {
   background-color: yellow;
 }
 
-#downloadfile {
-  margin: auto;
-  display: block;
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
 }
